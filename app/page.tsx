@@ -17,9 +17,8 @@ export default function Home() {
   };
 
   async function getWeather() {
-    const api_key = "caa4e04e1b499131fcfc68880dca51ac";
-    const result = await fetch(
-      `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${api_key}&units=metric`,
+     const result = await fetch(
+      `https://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=${process.env.NEXT_PUBLIC_API_KEY}&units=metric`,
     );
 
     const data = await result.json(); // convert to JSON

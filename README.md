@@ -8,15 +8,14 @@ A modern Next.js weather application that provides real-time weather forecasts u
 - 📅 Multi-day weather forecast
 - 🎨 Modern UI with Tailwind CSS
 - ⚡ Built with Next.js 16 and React 19
-- 📱 Fully responsive design
 - ⚙️ TypeScript support
 - 🔍 ESLint configuration for code quality
 
 ## Tech Stack
 
-- **Framework:** [Next.js](https://nextjs.org) 16.2.4
+- **Framework:** [Next.js]16.2.4
 - **React:** 19.2.4
-- **Styling:** [Tailwind CSS](https://tailwindcss.com) 4.2.4
+- **Styling:** [Tailwind CSS] 4.2.4
 - **Language:** TypeScript 5
 - **Linting:** ESLint 9
 - **API:** [OpenWeatherMap API](https://openweathermap.org/)
@@ -26,7 +25,7 @@ A modern Next.js weather application that provides real-time weather forecasts u
 ### Prerequisites
 
 - Node.js 18+ 
-- npm or yarn package manager
+- npm package manager
 
 ### Installation
 
@@ -44,7 +43,8 @@ npm install
 3. Create a `.env.local` file and add your OpenWeatherMap API key:
 ```env
 # Get your free API key from https://openweathermap.org/
-NEXT_PUBLIC_WEATHER_API_KEY=your_api_key_here
+NEXT_PUBLIC_API_KEY=your_api_key_here
+//NEXT_PUBLIC..:to mske the key accesable from client side which is the browser
 ```
 
 ### Running the Development Server
@@ -64,11 +64,7 @@ npm run build
 npm start
 ```
 
-### Linting
-
-```bash
-npm run lint
-```
+ 
 
 ## Project Structure
 
@@ -99,25 +95,8 @@ first-app/
 
 - `NEXT_PUBLIC_WEATHER_API_KEY` - Your OpenWeatherMap API key (required)
 
-## Contributing
-
-Contributions are welcome! Please feel free to submit a Pull Request.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](./LICENSE) file for details.
-
-## Support
-
-For support, please open an issue on the GitHub repository.
-
-## Learn More
-
-- [Next.js Documentation](https://nextjs.org/docs)
-- [React Documentation](https://react.dev)
-- [Tailwind CSS Documentation](https://tailwindcss.com/docs)
-- [OpenWeatherMap API](https://openweathermap.org/api)
-
+ 
+ 
 ## Deploy on Vercel
 
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
