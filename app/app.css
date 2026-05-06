@@ -54,6 +54,9 @@ margin: 50px 30px;
     font-weight: bolder;
 }
  
+.weatherDay:hover{
+    
+}
 .weather-forecast-all-days{
     display: flex;
     justify-content: center;

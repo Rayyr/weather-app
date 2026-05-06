@@ -1,17 +1,22 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
-import { useState } from "react";
+
+import { SetStateAction, useState } from "react";
 import "./app.css";
 import "./globals.css";
 
 export default function Home() {
+ //dummy data format just to handle the error from next.js
+   
+
   const [city, setCity] = useState("");
-  const [weather, setWeather] = useState("");
+  const [weather, setWeather] = useState<any|null>(null);
   const [error, setError] = useState("");
-  const [selectedDay, setSelectedDay] = useState(null);
+  const [selectedDay, setSelectedDay] = useState<any|null>(null);
   const [open, setOpen] = useState(false);
 
-  const handleDayClick = (day) => {
+  const handleDayClick = (day: SetStateAction<null>) => {
     setSelectedDay(day);
     setOpen(true);
   };
@@ -24,7 +29,7 @@ export default function Home() {
     const data = await result.json(); // convert to JSON
     if (data.cod !== "200") {
       setError(`Sorry , there is no city with this name : ${city}`);
-      setWeather("");
+      setWeather(null);
     } else {
       setError("");
       setWeather(data);
@@ -69,14 +74,15 @@ export default function Home() {
 
       <div className="weather-forecast-all-days">
         {error && (
-          <h1 className="invalidCity text-red-500 text-xl font-bold">
-            {error}
-          </h1>
+ <div className="mt-24 p-4 mb-4 text-sm text-red-800 rounded bg-red-100" role="alert">
+  <span className="font-medium"></span>
+  {error}
+</div>
         )}
 
         {weather?.list &&
-          weather.list
-            .filter((item, index) => index % 8 === 0)
+         ( weather.list as any[])
+            .filter((item, index: number) => index % 8 === 0)
             .slice(0, 5)
             .map((item, index) => {
               const date = new Date(item.dt_txt);
@@ -84,12 +90,15 @@ export default function Home() {
               const isToday = date.toDateString() === today.toDateString();
 
               return (
-                <div key="hi">
+                <div key={index} className=" ">
                   <div
-                    key={index}
+                     
                     onClick={() => handleDayClick(item)}
-                    className={`${isToday ? "weatherDay  bg-blue-500 backdrop-blur-md text-white border border-blue-500 hover:bg-blue-600  active:bg-blue-500 rounded-xl px-4 py-2 shadow" : "weatherDay  bg-white/20 backdrop-blur-md text-white border border-white/30 hover:bg-white/30 active:bg-white/40 rounded-xl px-4 py-2 shadow"}`}
+                    className={`group relative cursor-pointer {
+                      ${isToday ? "weatherDay  bg-blue-500 backdrop-blur-md text-white border border-blue-500 hover:bg-blue-600  active:bg-blue-500 rounded-xl px-4 py-2 shadow" : "weatherDay  bg-white/20 backdrop-blur-md text-white border border-white/30 hover:bg-white/30 active:bg-white/40 rounded-xl px-4 py-2 shadow"}`}
                   >
+<span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 group-hover:opacity-100 transition text-sm bg-black/40 px-4 py-2 rounded">  Click to see details
+</span>
                     <h3>
                       {new Date(item.dt_txt).toLocaleDateString("en-US", {
                         weekday: "long",
