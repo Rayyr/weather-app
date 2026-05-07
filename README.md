@@ -40,7 +40,7 @@ cd first-app
 npm install
 ```
 
-3. Create a `.env.local` file and add your OpenWeatherMap API key:
+3. Create a `.env` file and add your OpenWeatherMap API key:
 ```env
 # Get your free API key from https://openweathermap.org/
 NEXT_PUBLIC_API_KEY=your_api_key_here
